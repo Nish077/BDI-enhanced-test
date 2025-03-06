@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BDI Questionnaire</title>
+    <link rel="stylesheet" href="test.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="assessments-container">
+            <h1 class="assessments-title">Beck Depression Inventory</h1>
+            <p class="assessment-body">
+                Sometimes it is natural to feel many negative emotions such as fatigue, malaise, and lack of motivation.
+                However, when these negative feelings start to drain your life energy and make you unmotivated towards
+                life, depression can occur.
+                If you’ve been feeling tired, depressed, and unmotivated for at least a week, taking this quiz can help
+                you understand yourself.
+                The Beck Depression Test identifies common symptoms that may relate to depression severity.
+                <strong>If your depression level seems severe, consulting a professional psychologist is highly
+                    recommended.</strong>
+                Remember: This test is **not a diagnosis**, but can be a helpful tool for understanding your mental
+                well-being.
+                Only a specialist psychologist can make an accurate diagnosis.
+            </p>
+
+            <a href="#bdiForm">
+                <button class="cta-button">Take the Test</button>
+
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="mainform">
+        <form id="bdiForm" class="questioncontainer">
+            <div class="age-gender">
+                <div>
+                    <label for="age">Age:</label>
+                    <input class="age-box" type="number" id="age" name="age" min="1" max="120" required />
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+                    <select class="gender-box" id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+
+            </div>
+            <br /><br />
+
+            <div id="questions-container">
+            </div>
+
+            <input type="submit" value="Submit" class="cta-button" />
+        </form>
+    </div>
+
+    <script>
+        // Modified BDI Questions with IDs
+        const bdiQuestions = [
+            {
+                id: 1,
+                question: "How much sadness have you felt during the past week, including today?",
+                answers: [
+                    { text: "I have not felt sad", score: 0 },
+                    { text: "I have felt sad much of the time", score: 1 },
+                    { text: "I have felt sad all the time", score: 2 },
+                    { text: "I have felt so sad or unhappy that I can't stand it", score: 3 }
+                ]
+            },
+            {
+                id: 2,
+                question: "How discouraged have you felt about your future during the past week, including today?",
+                answers: [
+                    { text: "I have not felt discouraged about my future", score: 0 },
+                    { text: "I have felt more discouraged about my future than I used to", score: 1 },
+                    { text: "I have not expected things to work out for me", score: 2 },
+                    { text: "I have felt my future is hopeless and will only get worse", score: 3 }
+                ]
+            },
+            {
+                id: 3,
+                question: "How much have you felt like a failure during the past week, including today?",
+                answers: [
+                    { text: "I have not felt like a failure", score: 0 },
+                    { text: "I have felt that I have failed more than I should have", score: 1 },
+                    { text: "As I look back, I have seen a lot of failures", score: 2 },
+                    { text: "I have felt I am a complete failure as a person", score: 3 }
+                ]
+            },
+            {
+                id: 4,
+                question: "How much pleasure have you experienced from things you enjoy during the past week, including today?",
+                answers: [
+                    { text: "I have gotten as much pleasure as I ever did from things I enjoy", score: 0 },
+                    { text: "I have not enjoyed things as much as I used to", score: 1 },
+                    { text: "I have gotten very little pleasure from things I used to enjoy", score: 2 },
+                    { text: "I have not been able to get any pleasure from things I used to enjoy", score: 3 }
+                ]
+            },
+            {
+                id: 5,
+                question: "How guilty have you felt during the past week, including today?",
+                answers: [
+                    { text: "I have not felt particularly guilty", score: 0 },
+                    { text: "I have felt guilty much of the time", score: 1 },
+                    { text: "I have felt quite guilty most of the time", score: 2 },
+                    { text: "I have felt guilty all of the time", score: 3 }
+                ]
+            },
+            {
+                id: 6,
+                question: "How much have you felt punished during the past week, including today?",
+                answers: [
+                    { text: "I have not felt I am being punished", score: 0 },
+                    { text: "I have felt I may be punished", score: 1 },
+                    { text: "I have expected to be punished", score: 2 },
+                    { text: "I have felt I am being punished", score: 3 }
+                ]
+            },
+            {
+                id: 7,
+                question: "How have you felt about yourself during the past week, including today?",
+                answers: [
+                    { text: "I have felt the same about myself as ever", score: 0 },
+                    { text: "I have lost confidence in myself", score: 1 },
+                    { text: "I have been disappointed in myself", score: 2 },
+                    { text: "I have disliked myself", score: 3 }
+                ]
+            },
+            {
+                id: 8,
+                question: "How much have you criticized yourself during the past week, including today?",
+                answers: [
+                    { text: "I have not criticized or blamed myself more than usual", score: 0 },
+                    { text: "I have been more critical of myself than I used to be", score: 1 },
+                    { text: "I have criticized myself for all my faults", score: 2 },
+                    { text: "I have blamed myself for everything bad that has happened", score: 3 }
+                ]
+            },
+            {
+                id: 9,
+                question: "How often have you had thoughts of killing yourself during the past week, including today?",
+                answers: [
+                    { text: "I have not had any thoughts of killing myself", score: 0 },
+                    { text: "I have had thoughts of killing myself but would not carry them out", score: 1 },
+                    { text: "I have wanted to kill myself", score: 2 },
+                    { text: "I would kill myself if I had the chance", score: 3 }
+                ]
+            },
+            {
+                id: 10,
+                question: "How often have you cried during the past week, including today?",
+                answers: [
+                    { text: "I have not cried any more than usual", score: 0 },
+                    { text: "I have cried more now than I used to", score: 1 },
+                    { text: "I have cried all the time now", score: 2 },
+                    { text: "I used to be able to cry, but now I can't cry even though I want to", score: 3 }
+                ]
+            },
+            {
+                id: 11,
+                question: "How restless or agitated have you felt during the past week, including today?",
+                answers: [
+                    { text: "I have been no more restless or wound up than usual", score: 0 },
+                    { text: "I have felt more restless or wound up than usual", score: 1 },
+                    { text: "I have been so restless or agitated that it's hard to stay still", score: 2 },
+                    { text: "I have been so restless or agitated that I have to keep moving or doing something", score: 3 }
+                ]
+            },
+            {
+                id: 12,
+                question: "How much interest have you had in other people during the past week, including today?",
+                answers: [
+                    { text: "I have not lost interest in other people", score: 0 },
+                    { text: "I have been less interested in other people than I used to be", score: 1 },
+                    { text: "I have lost most of my interest in other people", score: 2 },
+                    { text: "I have lost all of my interest in other people", score: 3 }
+                ]
+            },
+            {
+                id: 13,
+                question: "How difficult has it been for you to make decisions during the past week, including today?",
+                answers: [
+                    { text: "I have made decisions about as well as I ever could", score: 0 },
+                    { text: "I have found it more difficult to make decisions than usual", score: 1 },
+                    { text: "I have had much greater difficulty in making decisions than I used to", score: 2 },
+                    { text: "I have not been able to make decisions at all anymore", score: 3 }
+                ]
+            },
+            {
+                id: 14,
+                question: "How worthless have you felt during the past week, including today?",
+                answers: [
+                    { text: "I have not felt I am worthless", score: 0 },
+                    { text: "I have not considered myself as worthwhile and useful as I used to", score: 1 },
+                    { text: "I have felt more worthless compared to other people", score: 2 },
+                    { text: "I have felt utterly worthless", score: 3 }
+                ]
+            },
+            {
+                id: 15,
+                question: "How much energy have you had during the past week, including today?",
+                answers: [
+                    { text: "I have had as much energy as ever", score: 0 },
+                    { text: "I have had less energy than I used to have", score: 1 },
+                    { text: "I have not had enough energy to do very much", score: 2 },
+                    { text: "I have not had enough energy to do anything", score: 3 }
+                ]
+            },
+            {
+                id: 16,
+                question: "How has your sleeping pattern changed during the past week, including today?",
+                answers: [
+                    { text: "I have not experienced any change in my sleeping pattern", score: 0 },
+                    { text: "I have slept somewhat more/less than usual", score: 1 },
+                    { text: "I have slept a lot more/less than usual", score: 2 },
+                    { text: "I have not been able to sleep at all / I have slept all the time", score: 3 }
+                ]
+            },
+            {
+                id: 17,
+                question: "How irritable have you been during the past week, including today?",
+                answers: [
+                    { text: "I have been no more irritable than usual", score: 0 },
+                    { text: "I have been more irritable than usual", score: 1 },
+                    { text: "I have been much more irritable than usual", score: 2 },
+                    { text: "I have been irritable all the time", score: 3 }
+                ]
+            },
+            {
+                id: 18,
+                question: "How has your appetite changed during the past week, including today?",
+                answers: [
+                    { text: "I have not experienced any change in my appetite", score: 0 },
+                    { text: "My appetite has been somewhat less/greater than usual", score: 1 },
+                    { text: "My appetite has been much less/greater than usual", score: 2 },
+                    { text: "I have had no appetite at all / I have overeaten constantly", score: 3 }
+                ]
+            },
+            {
+                id: 19,
+                question: "How difficult has it been for you to concentrate during the past week, including today?",
+                answers: [
+                    { text: "I have been able to concentrate as well as ever", score: 0 },
+                    { text: "I have not been able to concentrate as well as usual", score: 1 },
+                    { text: "It has been hard to keep my mind on anything for very long", score: 2 },
+                    { text: "I have found that I cannot concentrate on anything", score: 3 }
+                ]
+            },
+            {
+                id: 20,
+                question: "How tired or fatigued have you been during the past week, including today?",
+                answers: [
+                    { text: "I have been no more tired or fatigued than usual", score: 0 },
+                    { text: "I have gotten more tired or fatigued more easily than usual", score: 1 },
+                    { text: "I have been too tired or fatigued to do a lot of things I used to do", score: 2 },
+                    { text: "I have been too tired or fatigued to do most things I used to do", score: 3 }
+                ]
+            },
+            {
+                id: 21,
+                question: "How much interest have you had in sex during the past week, including today?",
+                answers: [
+                    { text: "I have not noticed any recent change in my interest in sex", score: 0 },
+                    { text: "I have been less interested in sex than I used to be", score: 1 },
+                    { text: "I have been much less interested in sex than before", score: 2 },
+                    { text: "I have lost all interest in sex", score: 3 }
+                ]
+            }
+        ];
+
+        function generateQuestions() {
+            const container = document.getElementById("questions-container");
+            let html = "";
+
+            bdiQuestions.forEach(function (question, index) {
+                html += `
+                <div class="question-container" data-question-id="${question.id}">
+                    <div class="question-text">${index + 1}. ${question.question}</div>`;
+
+                let answersHtml = "";
+                question.answers.forEach((answer, ansIndex) => {
+                    answersHtml += `
+                    <div class="answer-option">
+                        <input type="radio" 
+                               id="q${index}_a${ansIndex}" 
+                               name="q${index}" 
+                               value="${answer.score}" 
+                               data-answer-text="${answer.text}"
+                               required>
+                        <label for="q${index}_a${ansIndex}">
+                            ${answer.text} (Score: ${answer.score})
+                        </label>
+                    </div>`;
+                });
+
+                html += answersHtml + "</div>";
+            });
+
+            container.innerHTML = html;
+        }
+
+        document.getElementById("bdiForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const responses = [];
+        let totalScore = 0;
+
+        bdiQuestions.forEach(question => {
+            const selectedAnswer = document.querySelector(
+                `input[name="q${question.id - 1}"]:checked`
+            );
+
+            if (selectedAnswer) {
+                responses.push({
+                    questionId: question.id,
+                    questionText: question.question,
+                    answerScore: parseInt(selectedAnswer.value),
+                    answerText: selectedAnswer.nextElementSibling.textContent.replace(/\s*\(Score: \d+\)$/, '')
+                });
+                totalScore += parseInt(selectedAnswer.value);
+            }
+        });
+
+        const result = {
+            age: document.getElementById("age").value,
+            gender: document.getElementById("gender").value,
+            date: new Date().toISOString(),
+            totalScore: totalScore,
+            severity: getScoreInterpretation(totalScore),
+            responses: responses
+        };
+
+        localStorage.setItem("bdiResult", JSON.stringify(result));
+        window.location.href = "individualResults.html"; // Redirect to results page
+    });
+
+    function getScoreInterpretation(score) {
+        if (score <= 10) return "Normal ups and downs";
+        if (score <= 16) return "Mild mood disturbance";
+        if (score <= 20) return "Borderline clinical depression";
+        if (score <= 30) return "Moderate depression";
+        if (score <= 40) return "Severe depression";
+        return "Extreme depression";
+    }
+        window.onload = generateQuestions;
+    </script>
+</body>
+
+</html>

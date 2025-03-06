@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDI Results</title>
+    <link rel="stylesheet" href="test.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            text-align: center;
+        }
+
+        .results-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* .high-weightage-table {
+            margin: 6rem 0;
+        } */
+
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .severity {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 10px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background: #0056b3;
+        }
+
+        .high-weightage-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 4rem;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="results-container">
+        <h1>BDI Assessment Results</h1>
+        <p><strong>Age:</strong> <span id="age"></span></p>
+        <p><strong>Gender:</strong> <span id="gender"></span></p>
+        <p><strong>Assessment Date:</strong> <span id="date"></span></p>
+        <p><strong>Total Score:</strong> <span id="totalScore"></span></p>
+        <p class="severity"><strong>Severity:</strong> <span id="severity"></span></p>
+
+
+        <!-- main table -->
+        <table>
+            <tr>
+                <th>Question</th>
+                <th>Response</th>
+                <th>Score</th>
+            </tr>
+            <tbody id="resultsTable"></tbody>
+        </table>
+
+        <div style="height: 1px; background-color: gray; margin-top: 3rem;"></div>
+
+        <!-- High Weightage Questions Section -->
+        <p class="high-weightage-title">Score of High Weightage Questions</p>
+        <table>
+            <tr>
+                <th>Question No.</th>
+                <th>Question</th>
+                <th>Response</th>
+                <th>Score</th>
+            </tr>
+            <tbody id="highWeightageTable"></tbody>
+        </table>
+
+        <button class="back-button" onclick="window.location.href='index.html'">Take Again</button>
+    </div>
+
+    <script>
+        const result = JSON.parse(localStorage.getItem("bdiResult"));
+
+        if (result) {
+            document.getElementById("age").textContent = result.age;
+            document.getElementById("gender").textContent = result.gender;
+            document.getElementById("date").textContent = new Date(result.date).toLocaleString();
+            document.getElementById("totalScore").textContent = result.totalScore;
+            document.getElementById("severity").textContent = result.severity;
+
+            const table = document.getElementById("resultsTable");
+            const highWeightageTable = document.getElementById("highWeightageTable");
+
+            // High-weightage questions in specified order
+            const highWeightageQuestions = [10, 1, 19, 7, 18, 11, 13, 20, 8, 4];
+
+            // Print main table
+            result.responses.forEach(response => {
+                const row = `<tr>
+                    <td>${response.questionText}</td>
+                    <td>${response.answerText}</td>
+                    <td>${response.answerScore}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+
+            let hscore = 0;
+            // Print high-weightage questions in specified order
+            highWeightageQuestions.forEach(qNo => {
+                const response = result.responses.find(r => Number(r.questionId) === Number(qNo));
+
+                console.log(`Checking for Question ID: ${qNo}`, response); // Debugging
+
+                if (response) {
+                    const hrow = `<tr>
+                        <td>${qNo}</td>
+                        <td>${response.questionText}</td>
+                        <td>${response.answerText}</td>
+                        <td>${response.answerScore}</td>
+                    </tr>`;
+                    highWeightageTable.innerHTML += hrow;
+                    hscore += response.answerScore;
+                }
+            });
+            const hscoreElement = document.createElement("p");
+            hscoreElement.innerHTML = `<strong>Total Score of High-Weightage Questions: ${hscore} of 30</strong>`;
+            hscoreElement.style.fontSize = "20px";  // ✅ Increase text size for visibility
+            hscoreElement.style.fontWeight = "bold";
+            hscoreElement.style.color = "#d9534f";
+            hscoreElement.style.marginTop = "20px";
+            hscoreElement.style.textAlign = "center"; // ✅ Centers the text
+            hscoreElement.style.display = "block";
+            hscoreElement.style.width = "100%"; // ✅ Ensures it spans full width
+            highWeightageTable.parentElement.appendChild(hscoreElement);
+        } else {
+            document.body.innerHTML = "<h2>No results found. Please take the test first.</h2>";
+        }
+    </script>
+
+
+</body>
+
+</html>

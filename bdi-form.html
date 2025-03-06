@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDI Test Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Beck Depression Inventory (BDI) Test</h1>
+    </header>
+    
+    <form class="vertical-form" action="https://submit-form.com/your-form-id" method="POST">
+        
+        <!-- Age Input -->
+        <label for="age">Age</label>
+        <input id="age" name="age" type="number" required />
+
+        <!-- Gender Selection -->
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+        </select>
+
+        <!-- BDI Questions -->
+        <h2>Answer the following questions</h2>
+
+        <!-- Looping through all the BDI Questions -->
+        <label for="q1">1. Choose the option that best describes you:</label>
+        <select id="q1" name="q1" required>
+            <option value="0">I do not feel sad.</option>
+            <option value="1">I feel sad.</option>
+            <option value="2">I am sad all the time and I can't snap out of it.</option>
+            <option value="3">I am so sad and unhappy that I can't stand it.</option>
+        </select>
+
+        <label for="q2">2. Choose the option that best describes your feelings about the future:</label>
+        <select id="q2" name="q2" required>
+            <option value="0">I am not particularly discouraged about the future.</option>
+            <option value="1">I feel discouraged about the future.</option>
+            <option value="2">I feel I have nothing to look forward to.</option>
+            <option value="3">I feel the future is hopeless and that things cannot improve.</option>
+        </select>
+
+        <label for="q3">3. How do you feel about your achievements?</label>
+        <select id="q3" name="q3" required>
+            <option value="0">I do not feel like a failure.</option>
+            <option value="1">I feel I have failed more than the average person.</option>
+            <option value="2">As I look back on my life, all I can see is a lot of failures.</option>
+            <option value="3">I feel I am a complete failure as a person.</option>
+        </select>
+
+        <label for="q4">4. Do you still enjoy things?</label>
+        <select id="q4" name="q4" required>
+            <option value="0">I get as much satisfaction out of things as I used to.</option>
+            <option value="1">I don't enjoy things the way I used to.</option>
+            <option value="2">I don't get real satisfaction out of anything anymore.</option>
+            <option value="3">I am dissatisfied or bored with everything.</option>
+        </select>
+
+        <label for="q5">5. How often do you feel guilty?</label>
+        <select id="q5" name="q5" required>
+            <option value="0">I don't feel particularly guilty.</option>
+            <option value="1">I feel guilty a good part of the time.</option>
+            <option value="2">I feel quite guilty most of the time.</option>
+            <option value="3">I feel guilty all of the time.</option>
+        </select>
+
+        <label for="q6">6. Do you feel punished?</label>
+        <select id="q6" name="q6" required>
+            <option value="0">I don't feel I am being punished.</option>
+            <option value="1">I feel I may be punished.</option>
+            <option value="2">I expect to be punished.</option>
+            <option value="3">I feel I am being punished.</option>
+        </select>
+
+        <label for="q7">7. How do you feel about yourself?</label>
+        <select id="q7" name="q7" required>
+            <option value="0">I don't feel disappointed in myself.</option>
+            <option value="1">I am disappointed in myself.</option>
+            <option value="2">I am disgusted with myself.</option>
+            <option value="3">I hate myself.</option>
+        </select>
+
+        <label for="q8">8. How critical are you of yourself?</label>
+        <select id="q8" name="q8" required>
+            <option value="0">I don't feel I am any worse than anybody else.</option>
+            <option value="1">I am critical of myself for my weaknesses or mistakes.</option>
+            <option value="2">I blame myself all the time for my faults.</option>
+            <option value="3">I blame myself for everything bad that happens.</option>
+        </select>
+
+        <label for="q9">9. Do you have thoughts of self-harm?</label>
+        <select id="q9" name="q9" required>
+            <option value="0">I don't have any thoughts of killing myself.</option>
+            <option value="1">I have thoughts of killing myself, but I would not carry them out.</option>
+            <option value="2">I would like to kill myself.</option>
+            <option value="3">I would kill myself if I had the chance.</option>
+        </select>
+
+        <label for="q10">10. How often do you cry?</label>
+        <select id="q10" name="q10" required>
+            <option value="0">I don't cry any more than usual.</option>
+            <option value="1">I cry more now than I used to.</option>
+            <option value="2">I cry all the time now.</option>
+            <option value="3">I used to be able to cry, but now I can't cry even though I want to.</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

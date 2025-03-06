@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    min-height: 100vh;
+}
+
+.assessments-container {
+margin-bottom: 80px;
+    background: #f8f9fa;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.assessments-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.assessment-body {
+    font-size: 16px;
+    text-align: start;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.6;
+}
+
+.assessment-body strong {
+    font-weight: 600;
+    color: #222;
+}
+
+.cta-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #2b72ffd1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0076ed;
+}
+.age-box{
+    padding: 4px;
+}
+.gender-box{
+    padding: 4px;
+}
+
+/* main div for question container */
+.question-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.question-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.answer-option {
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    cursor: pointer;
+}
+.mainform{
+    min-width: 70vw;
+    margin: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.questioncontainer{
+    min-width: 70vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.age-gender{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+/* 

@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #22162B;
+    color: #00FFC5;
+}
+
+header {
+    background: #417B5A;
+    color: white;
+    padding: 20px;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+    background: #22162B;
+}
+
+.image-content img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    margin: 20px 0;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    text-align: center;
+}
+
+.category img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background: #DF9A57;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #FC7A57;
+}
+
+.contact-form {
+    margin: 50px;
+    background: #22162B;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, textarea {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #22162B;
+    color: #00FFC5;
+    border: 1px solid #00FFC5;
+    border-radius: 5px;
+}
+
+footer {
+    background: #417B5A;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+.auth-form{
+    margin: 50px;
+    background: #22162B;
+    padding: 20px;
+    border-radius: 10px;
+}
+.auth-form input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #22162B;
+    color: #ffffff;
+    border: 1px solid #00FFC5;
+    border-radius: 5px;
+}
+.auth-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.auth-btn {
+    padding: 15px 30px;
+    margin: 10px;
+    background: #DF9A57;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.auth-btn:hover {
+    background: #FC7A57;
+}
